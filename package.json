@@ -1,0 +1,16 @@
+{
+  "name": "cs262-monopoly-lab09-schultz",
+  "version": "1.0.0",
+  "description": "The running data service is available on Azure via the following link: https://monopoly-lab09-webservice-b8erg9d4b2grb6he.northcentralus-01.azurewebsites.net",
+  "main": "monopoly.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "pg-promise": "^11.10.1"
+  }
+}
