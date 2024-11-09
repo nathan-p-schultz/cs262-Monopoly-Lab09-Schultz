@@ -1,47 +1,42 @@
---
 -- This SQL script builds a monopoly database, deleting any pre-existing version.
---
--- @author nps9
 -- @version CS 262 Lab 8
---
+
 SET search_path TO monopoly;
 
--- Drop previous versions of the tables if they they exist, in reverse order of foreign keys.
+-- Drop previous versions of the tables if they exist, in reverse order of foreign keys.
 DROP TABLE IF EXISTS buildingLocations;
 DROP TABLE IF EXISTS PlayerGame;
 DROP TABLE IF EXISTS Game;
 DROP TABLE IF EXISTS Player;
 
-
-
--- Create the schema.ls
+-- Create the schema.
 CREATE TABLE Game (
-	ID integer PRIMARY KEY,
-	time timestamp
-	);
+    ID integer PRIMARY KEY,
+    time timestamp
+);
 
 CREATE TABLE Player (
-	ID integer PRIMARY KEY, 
-	emailAddress varchar(50) NOT NULL,
-	name varchar(50)
-	);
+    ID integer PRIMARY KEY, 
+    email varchar(50) NOT NULL,
+    name varchar(50)
+);
 
 CREATE TABLE PlayerGame (
-	gameID integer REFERENCES Game(ID), 
-	playerID integer REFERENCES Player(ID),
-	score integer,
-	finished boolean DEFAULT FALSE,
-	properties integer[],
-	pieceLocation integer
+    gameID integer REFERENCES Game(ID), 
+    playerID integer REFERENCES Player(ID),
+    score integer,
+    finished boolean DEFAULT FALSE,
+    properties integer[],
+    pieceLocation integer
 );
 
 CREATE TABLE buildingLocations (
-	gameID integer REFERENCES Game(ID),
-	playerID integer REFERENCES Player(ID),
-	propertyID integer,
-	numberHouses integer,
-	numberHotels integer
-	);
+    gameID integer REFERENCES Game(ID),
+    playerID integer REFERENCES Player(ID),
+    propertyID integer,
+    numberHouses integer,
+    numberHotels integer
+);
 
 -- Allow users to select data from the tables.
 GRANT SELECT ON Game TO PUBLIC;
@@ -57,7 +52,7 @@ INSERT INTO Game VALUES (4, '2006-05-20 08:00:00');
 INSERT INTO Game VALUES (5, '2005-06-29 10:00:00');
 INSERT INTO Game VALUES (6, '2024-10-31 23:59:59');
 
-INSERT INTO Player(ID, emailAddress) VALUES (1, 'me@calvin.edu');
+INSERT INTO Player(ID, email, name) VALUES (1, 'me@calvin.edu', NULL);
 INSERT INTO Player VALUES (2, 'king@gmail.com', 'The King');
 INSERT INTO Player VALUES (3, 'dog@gmail.com', 'Dogbreath');
 
