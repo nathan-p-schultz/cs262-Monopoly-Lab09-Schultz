@@ -74,6 +74,7 @@ function readHelloMessage(req, res) {
 }
 
 function readPlayers(req, res, next) {
+    res.send('Hello, CS 262 Monopoly service!');
   db.many('SELECT * FROM Player')
     .then((data) => {
       res.send(data);
